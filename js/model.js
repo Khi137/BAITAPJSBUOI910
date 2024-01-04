@@ -21,4 +21,15 @@ function NhanVien(taiKhoan, hoVaTen, email, matKhau, ngayLam, luong, chucVu, gio
                 return 0;
         }
     };
+    this.xepLoai = function () {
+        if (this.gioLam >= 192) {
+            return "Xuất sắc";
+        } else if (this.gioLam >= 176) {
+            return "Giỏi";
+        } else if (this.gioLam >= 160) {
+            return "Khá";
+        } else {
+            return "Trung bình";
+        }
+    };
 }

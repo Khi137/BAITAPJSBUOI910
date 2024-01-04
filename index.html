@@ -113,7 +113,8 @@
 								<h3 class="text-left text-primary font-weight-bold">Danh sách nhân viên</h3>
 							</div>
 							<div class="col-md-6 text-right">
-								<button class="btn btn-primary" onclick="hienFormThemNV()" id="btnThem">Thêm nhân viên</button>
+								<button class="btn btn-primary" onclick="hienFormThemNV()" id="btnThem">Thêm nhân
+									viên</button>
 							</div>
 						</div>
 					</div>
@@ -123,10 +124,11 @@
 						<div class="row mb-3">
 							<div class="col">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Loại nhân viên"
+									<input type="text" class="form-control" id="timkiem" placeholder="Loại nhân viên"
 										id="searchName">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
+										<button onclick="timKiemNhanVienTheoLoai()" id=""><span class="input-group-text" id="btnTimNV"><i
+													class="fa fa-search"></i></span></button>
 									</div>
 								</div>
 							</div>
@@ -291,7 +293,8 @@
 				<div class="modal-footer" id="modal-footer">
 					<button id="btnThemNV" onclick="themNhanVien()" type="button" class="btn btn-success">Thêm người
 						dùng</button>
-					<button id="btnCapNhat" type="button" class="btn btn-success">Cập nhật</button>
+					<button id="btnCapNhat" onclick="capNhatThongTin()" type="button" class="btn btn-success">Cập
+						nhật</button>
 					<button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
 				</div>
 
