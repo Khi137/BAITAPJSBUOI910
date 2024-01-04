@@ -180,6 +180,7 @@ function capNhatThongTin() {
     // index nhân viên cần sửa 
     var tk = document.getElementById("tknv").value;
     capNhatNhanVien(tk);
+    renderDSNV();
 }
 
 

@@ -10,9 +10,10 @@ function NhanVien(taiKhoan, hoVaTen, email, matKhau, ngayLam, luong, chucVu, gio
     this.gioLam = gioLam;
     this.tinhTongLuong = function () {
         switch (chucVu) {
-            case "Sếp":
+            case "Sếp":console.log("hello");
                 return this.luong * 3;
             case "Trưởng phòng":
+                
                 return this.luong * 2;
             case "Nhân viên":
                 return this.luong;

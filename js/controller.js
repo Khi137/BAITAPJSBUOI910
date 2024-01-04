@@ -4,6 +4,7 @@ function renderDSNV() {
     var contentHTML = "";
     for (var i = 0; i < dsnv.length; i++) {
         var data = dsnv[i];
+
         var trString = ` <tr>
                         <td>${data.taiKhoan}</td>
                         <td>${data.hoVaTen}</td>
@@ -48,7 +49,6 @@ function hienFormThemNV() {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
-    document.getElementById("datepicker").value = "";
     document.getElementById("luongCB").value = "";
     document.getElementById("chucvu").value = "";
     document.getElementById("gioLam").value = "";
@@ -113,12 +113,13 @@ function renderDSNVTheoLoai(loai) {
         for (var i = 0; i < dsnv.length; i++) {
             var data = dsnv[i];
             var xepLoai = dsnv[i].xepLoai();
+
             if (xepLoai == "Trung bình") {
                 var trString = ` <tr>
                 <td>${data.taiKhoan}</td>
                 <td>${data.hoVaTen}</td>
                 <td>${data.email}</td>
-                <td>${data.ngayLam}</td>
+               <td>${data.ngayLam}</td>
                 <td>${data.chucVu}</td>
                 <td>${data.tinhTongLuong()}</td>
                 <td>${data.xepLoai()}</td>
@@ -138,12 +139,13 @@ function renderDSNVTheoLoai(loai) {
         for (var i = 0; i < dsnv.length; i++) {
             var data = dsnv[i];
             var xepLoai = dsnv[i].xepLoai();
+
             if (xepLoai == "Khá") {
                 var trString = ` <tr>
                 <td>${data.taiKhoan}</td>
                 <td>${data.hoVaTen}</td>
                 <td>${data.email}</td>
-                <td>${data.ngayLam}</td>
+               <td>${data.ngayLam}</td>
                 <td>${data.chucVu}</td>
                 <td>${data.tinhTongLuong()}</td>
                 <td>${data.xepLoai()}</td>
@@ -163,12 +165,13 @@ function renderDSNVTheoLoai(loai) {
         for (var i = 0; i < dsnv.length; i++) {
             var data = dsnv[i];
             var xepLoai = dsnv[i].xepLoai();
+
             if (xepLoai == "Giỏi") {
                 var trString = ` <tr>
                 <td>${data.taiKhoan}</td>
                 <td>${data.hoVaTen}</td>
                 <td>${data.email}</td>
-                <td>${data.ngayLam}</td>
+               <td>${data.ngayLam}</td>
                 <td>${data.chucVu}</td>
                 <td>${data.tinhTongLuong()}</td>
                 <td>${data.xepLoai()}</td>
@@ -188,12 +191,13 @@ function renderDSNVTheoLoai(loai) {
         for (var i = 0; i < dsnv.length; i++) {
             var data = dsnv[i];
             var xepLoai = dsnv[i].xepLoai();
+
             if (xepLoai == "Xuất sắc") {
                 var trString = ` <tr>
                 <td>${data.taiKhoan}</td>
                 <td>${data.hoVaTen}</td>
                 <td>${data.email}</td>
-                <td>${data.ngayLam}</td>
+               <td>${data.ngayLam}</td>
                 <td>${data.chucVu}</td>
                 <td>${data.tinhTongLuong()}</td>
                 <td>${data.xepLoai()}</td>

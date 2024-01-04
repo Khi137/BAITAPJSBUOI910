@@ -127,8 +127,8 @@
 									<input type="text" class="form-control" id="timkiem" placeholder="Loại nhân viên"
 										id="searchName">
 									<div class="input-group-prepend">
-										<button onclick="timKiemNhanVienTheoLoai()" id=""><span class="input-group-text" id="btnTimNV"><i
-													class="fa fa-search"></i></span></button>
+										<button onclick="timKiemNhanVienTheoLoai()" id=""><span class="input-group-text"
+												id="btnTimNV"><i class="fa fa-search"></i></span></button>
 									</div>
 								</div>
 							</div>
@@ -330,6 +330,16 @@
 		$(document).ready(function () {
 			$('#sidebarCollapse').on('click', function () {
 				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function () {
+			$("#datepicker").datepicker({
+				dateFormat: 'dd/mm/yy',
+				changeMonth: true,
+				changeYear: true,
+				yearRange: "1900:+nn"
 			});
 		});
 	</script>
