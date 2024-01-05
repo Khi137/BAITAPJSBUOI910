@@ -219,3 +219,112 @@ function renderDSNVTheoLoai(loai) {
         renderDSNV();
     };
 }
+function layThongTin() {
+    var nvResult;
+    var taiKhoan = document.getElementById("tknv").value;
+    var hoVaTen = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var matKhau = document.getElementById("password").value;
+    var ngayLam = document.getElementById("datepicker").value;
+    var luong = document.getElementById("luongCB").value * 1;
+    var chucVu = document.getElementById("chucvu").value;
+    var gioLam = document.getElementById("gioLam").value;
+    if (validate(taiKhoan, hoVaTen, email, matKhau, ngayLam, luong, chucVu, gioLam)) {
+        //   tạo object
+        var nv = {
+            taiKhoan: taiKhoan,
+            hoVaTen: hoVaTen,
+            email: email,
+            matKhau: matKhau,
+            ngayLam: ngayLam,
+            luong: luong,
+            chucVu: chucVu,
+            gioLam: gioLam,
+            tinhTongLuong: function () {
+                switch (this.chucVu) {
+                    case "Sếp":
+                        return this.luong * 3;
+                    case "Trưởng phòng":
+                        return this.luong * 2;
+                    case "Nhân viên":
+                        return this.luong;
+                    default:
+                        console.error("Chức vụ không hợp lệ");
+                        return 0;
+                }
+            },
+            xepLoai: function () {
+                if (this.gioLam >= 192) {
+                    return "Xuất sắc";
+                } else if (this.gioLam >= 176) {
+                    return "Giỏi";
+                } else if (this.gioLam >= 160) {
+                    return "Khá";
+                } else {
+                    return "Trung bình";
+                }
+            },
+        };
+        nvResult=nv;
+    };
+    return nvResult;
+}
+function showThongTin(tk, dsnv) {
+    var indexToRemove = dsnv.findIndex(function (item) {
+        return item.taiKhoan === tk;
+    });
+    document.getElementById("tknv").value = dsnv[indexToRemove].taiKhoan;
+    document.getElementById('tknv').readOnly = true;
+    document.getElementById("name").value = dsnv[indexToRemove].hoVaTen;
+    document.getElementById("email").value = dsnv[indexToRemove].email;
+    document.getElementById("password").value = dsnv[indexToRemove].matKhau;
+    document.getElementById("datepicker").value = dsnv[indexToRemove].ngayLam;
+    document.getElementById("luongCB").value = dsnv[indexToRemove].luong;
+    document.getElementById("chucvu").value = dsnv[indexToRemove].chucVu;
+    document.getElementById("gioLam").value = dsnv[indexToRemove].gioLam;
+}
+function validate(taiKhoan, hoVaTen, email, matKhau, ngayLam, luong, chucVu, gioLam) {
+    // Validation
+    if (taiKhoan.length < 4 || taiKhoan.length > 6 || taiKhoan.trim() === "") {
+        alert("Tài khoản phải có từ 4 đến 6 ký số và không để trống.");
+        return false;
+    }
+
+    if (!validateVietnameseName(hoVaTen) || hoVaTen.trim() === "") {
+        alert("Tên nhân viên phải là chữ và không để trống.");
+        return false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.trim() === "") {
+        alert("Email phải đúng định dạng và không để trống.");
+        return false;
+    }
+
+    if (matKhau.length < 6 || matKhau.length > 10 || matKhau.trim() === "" ||
+        !/[0-9]/.test(matKhau) || !/[A-Z]/.test(matKhau) || !/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(matKhau)) {
+        alert("Mật khẩu phải từ 6-10 ký tự, chứa ít nhất 1 số, 1 ký tự in hoa và 1 ký tự đặc biệt, không để trống.");
+        return false;
+    }
+
+    if (ngayLam.trim() === "" || !/^\d{2}\/\d{2}\/\d{4}$/.test(ngayLam)) {
+        alert("Ngày làm không để trống, định dạng mm/dd/yyyy.");
+        return false;
+    }
+
+    if (luong < 1000000 || luong > 20000000 || luong === "") {
+        alert("Lương cơ bản từ 1,000,000 đến 20,000,000, không để trống.");
+        return false;
+    }
+
+    if (chucVu !== "Sếp" && chucVu !== "Trưởng phòng" && chucVu !== "Nhân viên") {
+        alert("Chức vụ phải chọn chức vụ hợp lệ (Giám đốc, Trưởng Phòng, Nhân Viên).");
+        return false;
+    }
+
+    if (gioLam < 80 || gioLam > 200 || gioLam.trim() === "") {
+        alert("Số giờ làm trong tháng từ 80 đến 200 giờ, không để trống.");
+        return false;
+    }
+
+    return true;
+}
