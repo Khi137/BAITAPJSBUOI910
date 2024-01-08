@@ -82,23 +82,22 @@ function capNhatNhanVien(taiKhoan) {
         return nv.taiKhoan === taiKhoan;
     });
 
+    // Cập nhật thông tin của nhân viên từ form
+    var hoVaTen = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var matKhau = document.getElementById("password").value;
+    var ngayLam = document.getElementById("datepicker").value;
+    var luong = document.getElementById("luongCB").value;
+    var chucVu = document.getElementById("chucvu").value;
+    var gioLam = document.getElementById("gioLam").value;
+    let nvEdit = new NhanVien(taiKhoan, hoVaTen, email, matKhau, ngayLam, luong, chucVu, gioLam);
+    
     // Kiểm tra xem nhân viên có tồn tại không
     if (index !== -1) {
         // Lấy thông tin của nhân viên cần cập nhật
-        var nv = dsnv[index];
-
-        // Cập nhật thông tin của nhân viên từ form
-        nv.hoVaTen = document.getElementById("name").value;
-        nv.email = document.getElementById("email").value;
-        nv.matKhau = document.getElementById("password").value;
-        nv.ngayLam = document.getElementById("datepicker").value;
-        nv.luong = document.getElementById("luongCB").value;
-        nv.chucVu = document.getElementById("chucvu").value;
-        nv.gioLam = document.getElementById("gioLam").value;
-
+        dsnv[index] = nvEdit;
         // Cập nhật dữ liệu trong LocalStorage
         localStorage.setItem("DSNV", JSON.stringify(dsnv));
-
         // Đóng form
         closeModal();
         // Render lại danh sách nhân viên
@@ -265,7 +264,7 @@ function layThongTin() {
                 }
             },
         };
-        nvResult=nv;
+        nvResult = nv;
     };
     return nvResult;
 }
