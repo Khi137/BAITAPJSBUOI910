@@ -43,6 +43,8 @@ function suaNhanVien(tk) {
     showThongTin(tk, dsnv);
     // Mở form
     openModal();
+    // 
+    displayNoneTb();
 }
 
 function capNhatThongTin() {
